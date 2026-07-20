@@ -31,4 +31,9 @@ class Installment extends Model
         return $this->belongsTo(Chit::class);
     }
 
+    public function payments()
+{
+    return $this->hasMany(Payment::class);
+}
+
 }

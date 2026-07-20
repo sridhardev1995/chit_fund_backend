@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\InstallmentController;
+use App\Http\Controllers\Api\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
@@ -81,4 +82,5 @@ Route::middleware('auth:sanctum')->group(function () {
         [ChitController::class, 'index']
     );
   Route::get('installments', [InstallmentController::class, 'allInstallments']);
+  Route::apiResource('payments', PaymentController::class)->except(['update']);
 });
