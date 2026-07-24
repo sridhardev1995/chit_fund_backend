@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return response()->json([
-        'status' => true,
-        'message' => 'Laravel API is running successfully'
+        'success' => true,
+        'message' => 'Chit Fund API is Running',
+        'version' => '1.0.0'
     ]);
 });
