@@ -6,12 +6,19 @@ use Illuminate\Support\Facades\DB;
 return new class extends Migration
 {
     public function up(): void
-    {
-        DB::statement("ALTER TABLE installments MODIFY status ENUM('PENDING','PARTIAL','PAID') DEFAULT 'PENDING'");
-    }
+{
+    DB::statement("
+        CREATE TYPE installment_status AS ENUM (
+            'PENDING',
+            'PARTIAL',
+            'PAID'
+        )
+    ");
 
-    public function down(): void
-    {
-        DB::statement("ALTER TABLE installments MODIFY status ENUM('PENDING','PAID') DEFAULT 'PENDING'");
-    }
+    DB::statement("
+        ALTER TABLE installments
+        ALTER COLUMN status TYPE installment_status
+        USING status::text::installment_status
+    ");
+}
 };
