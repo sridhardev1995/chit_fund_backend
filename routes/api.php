@@ -113,5 +113,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Multichit consolidated collection (e.g. Selva's 50 chits shown/paid as one weekly total)
     Route::get('customers/{customer}/saving-collections', [SavingInstallmentController::class, 'weeklyCollectionSummary']);
-    Route::post('customers/{customer}/saving-collections/{installmentNumber}/pay', [SavingInstallmentController::class, 'payWeeklyCollection']);
+        Route::post('customers/{customer}/saving-collections/{installmentNumber}/pay', [SavingInstallmentController::class, 'payWeeklyCollection']);
 });
