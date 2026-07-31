@@ -241,6 +241,36 @@ class ChitController extends Controller
 
 
     /**
+     * List installments for a specific chit
+     *
+     * NOTE: previously the route `/chits/{chit}/installments` pointed at
+     * index() by mistake, which returned ALL chits instead of one chit's
+     * weekly installments. This method fixes that.
+     */
+    public function installments($id)
+    {
+        $chit = Chit::find($id);
+
+        if (!$chit) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Chit not found.'
+            ], 404);
+        }
+
+        $installments = Installment::where('chit_id', $chit->id)
+                            ->orderBy('installment_number')
+                            ->get();
+
+        return response()->json([
+            'status' => true,
+            'data'   => $installments
+        ]);
+    }
+
+
+
+    /**
      * View Chit
      */
     public function show($id)
