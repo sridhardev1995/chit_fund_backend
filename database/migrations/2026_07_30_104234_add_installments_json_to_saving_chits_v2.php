@@ -23,8 +23,8 @@ return new class extends Migration
             }
 
             // Indexes
-            $table->index('customer_id', 'idx_saving_chits_customer_id');
-            $table->index('status', 'idx_saving_chits_status');
+            // $table->index('customer_id', 'idx_saving_chits_customer_id');
+            // $table->index('status', 'idx_saving_chits_status');
         });
     }
 
